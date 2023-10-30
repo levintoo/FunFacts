@@ -1,4 +1,4 @@
-package com.levintoo.funfacts.ui.ui
+package com.levintoo.funfacts.ui.screens.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

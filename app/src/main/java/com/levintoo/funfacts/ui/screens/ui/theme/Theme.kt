@@ -1,4 +1,4 @@
-package com.levintoo.funfacts.ui.ui
+package com.levintoo.funfacts.ui.screens.ui.theme
 
 import android.app.Activity
 import android.os.Build
