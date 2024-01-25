@@ -110,5 +110,5 @@ fun TextFieldComponent(
 @Preview(showBackground = true)
 @Composable
 fun TextFieldComponentPreview() {
-//    TextFieldComponent()
+    TextFieldComponent(onTextChanged = {})
 }
