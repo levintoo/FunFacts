@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.levintoo.funfacts.R
@@ -38,8 +39,39 @@ fun TopBar (value: String){
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun TopBarPreview() {
     TopBar("Hi mom\uD83D\uDC78")
+}
+
+@Composable
+fun TextComponent(
+    textValue: String,
+    textSize: TextUnit,
+    colorValue: Color = Color.Black
+) {
+    Text(
+        text = textValue,
+        fontSize = textSize,
+        color = colorValue,
+        fontWeight = FontWeight.Light
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TextComponentPreview() {
+    TextComponent(textValue = "Fun Interesting Facts\uD83E\uDD78", textSize = 24.sp)
+}
+
+@Composable
+fun TextFieldComponent() {
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TextFieldComponentPreview() {
+    TextFieldComponent()
 }
