@@ -85,6 +85,8 @@ fun TextFieldComponent(
         mutableStateOf("")
     }
 
+    val localFocusManager = LocalFocusManager.current
+
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         value = currentValue,
@@ -99,6 +101,9 @@ fun TextFieldComponent(
         keyboardOptions = KeyboardOptions(
             imeAction = ImeAction.Done
         ),
+        keyboardActions = KeyboardActions {
+            localFocusManager.clearFocus()
+        }
     )
 }
 
