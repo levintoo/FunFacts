@@ -18,11 +18,11 @@ import androidx.compose.ui.unit.sp
 import com.levintoo.funfacts.R
 
 @Composable
-fun TopBar (){
+fun TopBar (value: String){
     Row(modifier = Modifier.fillMaxWidth(),
     verticalAlignment = Alignment.CenterVertically) {
         Text(
-            text = "hi mom",
+            text = value,
             color = Color.Black,
             fontSize = 24.sp,
             fontWeight = FontWeight.Medium
@@ -41,5 +41,5 @@ fun TopBar (){
 @Preview
 @Composable
 fun TopBarPreview() {
-    TopBar()
+    TopBar("Hi mom\uD83D\uDC78")
 }
