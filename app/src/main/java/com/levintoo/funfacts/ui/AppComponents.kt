@@ -85,7 +85,6 @@ fun TextFieldComponent(
         mutableStateOf("")
     }
 
-
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         value = currentValue,
@@ -97,7 +96,9 @@ fun TextFieldComponent(
             Text(text = "Enter your name", fontSize = 18.sp)
         },
         textStyle = TextStyle.Default.copy(fontSize = 24.sp),
-
+        keyboardOptions = KeyboardOptions(
+            imeAction = ImeAction.Done
+        ),
     )
 }
 
