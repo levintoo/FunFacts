@@ -1,6 +1,7 @@
 package com.levintoo.funfacts.ui.screens
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,7 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.levintoo.funfacts.R
 import com.levintoo.funfacts.data.UserDataUiEvents
+import com.levintoo.funfacts.ui.AnimalCard
 import com.levintoo.funfacts.ui.TextComponent
 import com.levintoo.funfacts.ui.TextFieldComponent
 import com.levintoo.funfacts.ui.TopBar
@@ -45,11 +48,30 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
 
             Spacer(modifier = Modifier.size(60.dp))
 
+            TextComponent(
+                textValue = "Name",
+                textSize = 18.sp
+            )
+
+            Spacer(modifier = Modifier.size(10.dp))
+
             TextFieldComponent(onTextChanged = {
                 userInputViewModel.onEvent(
                     UserDataUiEvents.UserNameEntered(it)
                 )
             })
+
+            Spacer(modifier = Modifier.size(20.dp))
+
+            TextComponent(
+                textValue = "WHat do you like",
+                textSize = 18.sp
+            )
+
+            Row(modifier = Modifier.fillMaxWidth()) {
+                AnimalCard(image = R.drawable.cat_ic)
+                AnimalCard(image = R.drawable.dog_ic)
+            }
         }
     }
 }
