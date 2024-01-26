@@ -23,4 +23,8 @@ class UserInputViewModel : ViewModel() {
             }
         }
     }
+
+    fun isValidState(): Boolean {
+        return uiState.value.nameEntered.isNotEmpty() && uiState.value.animalSelected.isNotEmpty()
+    }
 }

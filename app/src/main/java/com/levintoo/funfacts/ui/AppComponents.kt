@@ -1,15 +1,21 @@
 package com.levintoo.funfacts.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -119,26 +125,61 @@ fun TextFieldComponentPreview() {
 }
 
 @Composable
-fun AnimalCard (image: Int) {
+fun AnimalCard (
+    image: Int,
+    selected: Boolean,
+    animalSelected: (animalName: String) -> Unit
+) {
     Card (
+        shape = RoundedCornerShape(8.dp),
         modifier = Modifier
             .padding(24.dp)
-            .size(130.dp),
+            .size(130.dp)
+            .clickable {
+                val animalName = if (image == R.drawable.cat_ic) "Cat" else "Dog"
+                animalSelected(animalName)
+            },
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
-        Image(
-            modifier = Modifier
-                .padding(16.dp)
-                .wrapContentWidth()
-                .wrapContentHeight()
-            ,
-            painter = painterResource(id = image),
-            contentDescription = "Animal image"
-        )
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .border(
+                width = 1.dp,
+                color = if (selected) Color.Green else Color.Transparent,
+                shape = RoundedCornerShape(8.dp),
+            )) {
+            Image(
+                modifier = Modifier
+                    .padding(16.dp)
+                    .wrapContentWidth()
+                    .wrapContentHeight()
+                ,
+                painter = painterResource(id = image),
+                contentDescription = "Animal image"
+            )
+        }
     }
 }
 @Preview
 @Composable
 fun AnimalCardPreview () {
-    AnimalCard(R.drawable.cat_ic)
+    AnimalCard(R.drawable.cat_ic, true) {}
+}
+
+@Composable
+fun ButtonComponent(
+    goToDetailsScreen: () -> Unit
+) {
+    Button(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { /*TODO*/ }
+    ) {
+        TextComponent(textValue = "Submit", textSize = 18.sp, colorValue = Color.White)
+    }
+}
+
+@Preview
+@Composable
+fun ButtonComponentPreview() {
+    ButtonComponent({})
 }
