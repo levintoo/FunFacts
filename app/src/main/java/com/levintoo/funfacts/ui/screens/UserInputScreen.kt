@@ -36,7 +36,7 @@ fun UserInputScreen(
                 .padding(18.dp),
         )
         {
-            TopBar("Hi mom\uD83D\uDC78")
+            TopBar("Hi mom \uD83D\uDC4B")
 
             TextComponent(
                 textValue = "Let's learn about you!",
