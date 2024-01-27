@@ -130,6 +130,7 @@ fun AnimalCard (
     selected: Boolean,
     animalSelected: (animalName: String) -> Unit
 ) {
+    val localFocusManager = LocalFocusManager.current
     Card (
         shape = RoundedCornerShape(8.dp),
         modifier = Modifier
@@ -138,6 +139,7 @@ fun AnimalCard (
             .clickable {
                 val animalName = if (image == R.drawable.cat_ic) "Cat" else "Dog"
                 animalSelected(animalName)
+                localFocusManager.clearFocus()
             },
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
@@ -172,7 +174,9 @@ fun ButtonComponent(
 ) {
     Button(
         modifier = Modifier.fillMaxWidth(),
-        onClick = { /*TODO*/ }
+        onClick = {
+            goToDetailsScreen()
+        }
     ) {
         TextComponent(textValue = "Submit", textSize = 18.sp, colorValue = Color.White)
     }

@@ -13,7 +13,7 @@ fun NavGraph(userInputViewModel: UserInputViewModel = viewModel() ) {
 
     NavHost(navController = navController, startDestination = Routes.USER_INPUT_SCREEN) {
         composable(Routes.USER_INPUT_SCREEN) {
-            UserInputScreen(userInputViewModel)
+            UserInputScreen(userInputViewModel, navController)
         }
 
         composable(Routes.WELCOME_SCREEN) {

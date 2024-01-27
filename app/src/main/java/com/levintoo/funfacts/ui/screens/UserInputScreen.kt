@@ -21,9 +21,14 @@ import com.levintoo.funfacts.ui.TextComponent
 import com.levintoo.funfacts.ui.TextFieldComponent
 import com.levintoo.funfacts.ui.TopBar
 import com.levintoo.funfacts.ui.UserInputViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun UserInputScreen(userInputViewModel: UserInputViewModel) {
+fun UserInputScreen(
+    userInputViewModel: UserInputViewModel,
+    navController: NavHostController
+) {
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -84,10 +89,13 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
             
             Spacer(modifier = Modifier.weight(1f))
 
-            if(userInputViewModel.isValidState())
-            ButtonComponent (
-                goToDetailsScreen = {}
-            )
+            if(userInputViewModel.isValidState()) {
+                ButtonComponent(
+                    goToDetailsScreen = {
+                        navController.navigate(Routes.WELCOME_SCREEN)
+                    }
+                )
+            }
         }
     }
 }
@@ -95,5 +103,5 @@ fun UserInputScreen(userInputViewModel: UserInputViewModel) {
 @Preview
 @Composable
 fun UserInputScreenPreview() {
-    UserInputScreen(UserInputViewModel())
+    UserInputScreen(UserInputViewModel(), rememberNavController())
 }
