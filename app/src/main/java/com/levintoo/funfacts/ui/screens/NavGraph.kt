@@ -16,7 +16,7 @@ fun NavGraph(userInputViewModel: UserInputViewModel = viewModel() ) {
     NavHost(navController = navController, startDestination = Routes.USER_INPUT_SCREEN) {
         composable(Routes.USER_INPUT_SCREEN) {
             UserInputScreen(userInputViewModel, showWelcomeScreen = {
-                navController.navigate("${Routes.WELCOME_SCREEN}/{${it.first}}/{${it.second}}")
+                navController.navigate("${Routes.WELCOME_SCREEN}/${it.first}/${it.second}")
             })
         }
 
@@ -26,7 +26,9 @@ fun NavGraph(userInputViewModel: UserInputViewModel = viewModel() ) {
                 navArgument(name = Routes.ANIMAL_SELECTED) { type = NavType.StringType },
             )
         ) {
-            WelcomeScreen()
+            val userName = it?.arguments?.getString(Routes.USER_NAME)
+            val animalSelected = it?.arguments?.getString(Routes.ANIMAL_SELECTED)
+            WelcomeScreen(userName, animalSelected)
         }
     }
 }
